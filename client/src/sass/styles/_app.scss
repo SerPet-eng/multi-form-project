@@ -1,0 +1,22 @@
+@use '../variables' as *;
+
+.app {
+  font-family: $fontFamily-Ubuntu;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  background-color: $clr-Neutral-700;
+
+  overflow-x: hidden;
+
+  .white-border {
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: $clr-Neutral-500;
+  }
+}

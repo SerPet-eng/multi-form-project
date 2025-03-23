@@ -1,0 +1,129 @@
+@use '../variables' as *;
+
+.container {
+  display: flex;
+  gap: 2rem;
+
+  max-width: 100%;
+
+  border-radius: 10px;
+
+  background-color: $clr-Neutral-500;
+
+  outline: 10px solid $clr-Neutral-500;
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+
+    overflow: hidden;
+    .form-content {
+      display: grid;
+      grid-template-columns: repeat(4, 500px);
+    }
+  }
+}
+
+// .form-container {
+//   border: 1px solid blue;
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: row;
+//   gap: 1rem;
+
+//   height: 500px;
+
+//   .paginate {
+//     display: flex;
+//     gap: 1rem;
+//     flex-direction: column;
+//     min-height: 100%;
+
+//     padding: 1rem;
+
+//     border: none;
+//     border-radius: 10px;
+
+//     .paginate-button {
+//       background-color: transparent;
+//       border: none;
+
+//       .paginate-button-text-group {
+//         display: flex;
+//         gap: 0.5rem;
+
+//         .paginate-number {
+//           border: 1px solid $clr-Neutral-500;
+//           border-radius: 50%;
+
+//           color: $clr-Neutral-500;
+//           font-size: 1rem;
+//           font-weight: $fontWeight-500;
+
+//           padding: 0.5rem 1rem;
+//           height: 50%;
+
+//           &.active {
+//             background-color: $clr-Primary-100;
+//             color: $clr-Primary-900;
+//             border: 1px solid $clr-Primary-100;
+//           }
+//         }
+
+//         .paginate-button-details {
+//           text-align: start;
+
+//           .details-steps {
+//             color: $clr-Neutral-900;
+//           }
+
+//           .details-title {
+//             color: $clr-Neutral-500;
+//             font-size: 1rem;
+//             font-weight: $fontWeight-500;
+//             text-transform: uppercase;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   .form-content {
+//     border: 1px solid red;
+//     display: flex;
+
+//     position: none;
+
+//     transform: none;
+//   }
+
+//   .form-button-group {
+//     display: flex;
+//     justify-content: space-between;
+//     padding: 1.5rem 1rem;
+
+//     background-color: $clr-Neutral-500;
+
+//     .prev-button {
+//       background-color: $clr-Neutral-500;
+//       border: none;
+
+//       color: $clr-Neutral-900;
+//       font-weight: $fontWeight-500;
+//     }
+
+//     .next-button {
+//       background-color: $clr-Primary-900;
+//       padding: 0.5rem;
+
+//       border: none;
+//       border-radius: 5px;
+
+//       color: $clr-Neutral-500;
+//       font-weight: $fontWeight-500;
+
+//       margin-left: auto;
+//     }
+//   }
+// }

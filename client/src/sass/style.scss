@@ -1,0 +1,19 @@
+@import './reset';
+
+@import './styles/app';
+@import './pages/form';
+@import './components/paginate';
+@import './components/buttons';
+@import './components/Steps/personal-form';
+@import './components/Steps/select-plan';
+@import './components/Steps/add-ons';
+@import './components/Steps/summary';
+
+@import './media_queries/app-mq';
+@import './media_queries/form-mq';
+@import './media_queries/personal-mq';
+@import './media_queries/select-plan-mq';
+@import './media_queries/add-ons-mq';
+@import './media_queries/summary-mq';
+
+// @import './test/test_form';

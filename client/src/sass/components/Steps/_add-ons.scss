@@ -1,0 +1,120 @@
+@use '../../variables' as *;
+
+.form-add-ons {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: $clr-Neutral-500;
+  padding: 1rem;
+
+  height: 100%; // media query
+
+  .form-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    margin: 1rem 0;
+
+    .form-control {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem;
+      border: 1px solid $clr-Neutral-900;
+      border-radius: 5px;
+      background-color: $clr-Neutral-500;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $clr-Primary-800;
+      }
+
+      input[type='checkbox'] {
+        display: none; // Hide the default checkbox
+      }
+
+      .checkmark {
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        border: 2px solid $clr-Neutral-900;
+        border-radius: 4px;
+        background-color: transparent;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          width: 8px;
+          height: 8px;
+          background-color: $clr-Primary-800;
+          border-radius: 2px;
+          display: none; // Hidden by default
+        }
+      }
+
+      input[type='checkbox']:checked ~ .checkmark::after {
+        display: block; // Show the inner checkmark when checked
+      }
+
+      input[type='checkbox']:checked ~ .checkmark {
+        border-color: $clr-Primary-800;
+        background-color: $clr-Neutral-600;
+      }
+
+      .form-control-text-container {
+        margin-left: 3rem;
+        .form-control-title {
+          color: $clr-Primary-900;
+          font-weight: $fontWeight-700;
+        }
+
+        .form-control-sub-title {
+          font-size: 12px;
+          line-height: 1.2;
+          color: $clr-Neutral-900;
+        }
+      }
+
+      .form-control-price {
+        margin-left: auto;
+        color: $clr-Primary-800;
+      }
+    }
+  }
+
+  .form-select-plan-group-button {
+    margin-top: auto;
+    align-self: flex-end;
+
+    .form-button-prev {
+      background-color: $clr-Neutral-500;
+      border: none;
+
+      color: $clr-Neutral-900;
+      font-weight: $fontWeight-500;
+
+      cursor: pointer;
+    }
+
+    .form-button-next {
+      margin-top: auto;
+      align-self: flex-end;
+
+      background-color: $clr-Primary-900;
+      color: $clr-Neutral-500;
+      border: none;
+      border-radius: 5px;
+
+      padding: 0.5rem;
+
+      cursor: pointer;
+    }
+  }
+}

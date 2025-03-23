@@ -1,0 +1,67 @@
+@use '../../variables' as *;
+
+.form-personal-info {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: $clr-Neutral-500;
+
+  padding: 1rem;
+
+  height: 100%; // media query
+
+  .form-title {
+    margin-top: 1rem;
+    color: $clr-Primary-900;
+    font-weight: $fontWeight-700;
+  }
+
+  .form-sub-title {
+    color: $clr-Neutral-900;
+    font-weight: $fontWeight-400;
+  }
+
+  .input-group {
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    width: 100%;
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        color: $clr-Primary-900;
+        font-weight: $fontWeight-400;
+      }
+
+      input {
+        border: 1px solid $clr-Neutral-800;
+        border-radius: 5px;
+        padding: 0.5rem;
+        font-weight: $fontWeight-500;
+
+        &::placeholder {
+          color: $clr-Neutral-800;
+          font-weight: $fontWeight-500;
+        }
+      }
+    }
+  }
+  .button-next {
+    margin-top: auto;
+    align-self: flex-end;
+
+    background-color: $clr-Primary-900;
+    color: $clr-Neutral-500;
+    border: none;
+    border-radius: 5px;
+
+    padding: 0.5rem;
+
+    cursor: pointer;
+  }
+}

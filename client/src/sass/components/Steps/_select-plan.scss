@@ -1,0 +1,151 @@
+@use '../../variables' as *;
+
+.form-select-plan {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: $clr-Neutral-500;
+
+  padding: 1rem;
+
+  height: 100%; // media query
+
+  .form-title {
+    margin-top: 1rem;
+    color: $clr-Primary-900;
+    font-weight: $fontWeight-700;
+  }
+
+  .form-sub-title {
+    color: $clr-Neutral-900;
+    font-weight: $fontWeight-400;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .form-control {
+      display: flex;
+      gap: 0.5rem;
+
+      border: 1px solid $clr-Neutral-800; // Default border
+      border-radius: 5px;
+      background-color: $clr-Neutral-500;
+
+      padding: 0.75rem;
+      cursor: pointer; // Make the entire label clickable
+
+      input[type='radio'] {
+        display: none; // Hides the native radio button
+      }
+
+      input[type='radio']:checked ~ .form-control {
+        border-color: $clr-Primary-800; // Highlights the parent container
+      }
+
+      /* Add specific styles for checked items */
+      &:has(input[type='radio']:checked) {
+        border-color: $clr-Primary-800;
+        background-color: $clr-Neutral-600; // Optional: change background color
+      }
+
+      .form-control-text-container {
+        .form-control-title {
+          color: $clr-Primary-900;
+          font-weight: $fontWeight-700;
+        }
+
+        .form-control-sub-title {
+          color: $clr-Neutral-900;
+        }
+      }
+    }
+  }
+
+  .form-switch {
+    border: none;
+    border-radius: 5px;
+    padding: 1rem;
+
+    background-color: $clr-Neutral-700;
+
+    display: flex;
+    justify-content: center;
+
+    .form-switch-text {
+      color: $clr-Neutral-900;
+      font-weight: $fontWeight-500;
+
+      &.active {
+        color: $clr-Primary-900;
+      }
+    }
+
+    .form-switch-button {
+      background-color: $clr-Primary-900;
+      border: none;
+      border-radius: 50px;
+      width: 50px;
+
+      display: flex;
+      justify-content: start;
+
+      padding: 0.25rem;
+
+      cursor: pointer;
+
+      &.active {
+        justify-content: end;
+      }
+
+      .circle {
+        background-color: $clr-Neutral-500;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-switch {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .form-select-plan-group-button {
+    margin-top: auto;
+    align-self: flex-end;
+
+    .form-button-prev {
+      background-color: $clr-Neutral-500;
+      border: none;
+
+      color: $clr-Neutral-900;
+      font-weight: $fontWeight-500;
+
+      cursor: pointer;
+    }
+
+    .form-button-next {
+      margin-top: auto;
+      align-self: flex-end;
+
+      background-color: $clr-Primary-900;
+      color: $clr-Neutral-500;
+      border: none;
+      border-radius: 5px;
+
+      padding: 0.5rem;
+
+      cursor: pointer;
+    }
+  }
+}

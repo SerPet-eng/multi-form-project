@@ -1,0 +1,571 @@
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+body {
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+.app {
+  font-family: "Ubuntu", sans-serif;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: hsl(217, 100%, 97%);
+  overflow-x: hidden;
+}
+.app .white-border {
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: hsl(0, 0%, 100%);
+}
+
+.container {
+  display: flex;
+  gap: 2rem;
+  max-width: 100%;
+  border-radius: 10px;
+  background-color: hsl(0, 0%, 100%);
+  outline: 10px solid hsl(0, 0%, 100%);
+}
+.container .form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  overflow: hidden;
+}
+.container .form-container .form-content {
+  display: grid;
+  grid-template-columns: repeat(4, 500px);
+}
+
+.container .paginate {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+}
+.container .paginate .paginate-button {
+  background-color: transparent;
+  border: none;
+}
+.container .paginate .paginate-button .paginate-button-text-group {
+  display: flex;
+  gap: 0.5rem;
+}
+.container .paginate .paginate-button .paginate-button-text-group .paginate-number {
+  border: 1px solid hsl(0, 0%, 100%);
+  border-radius: 50%;
+  color: hsl(0, 0%, 100%);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  height: 50%;
+}
+.container .paginate .paginate-button .paginate-button-text-group .paginate-number.active {
+  background-color: hsl(206, 94%, 87%);
+  color: hsl(213, 96%, 18%);
+  border: 1px solid hsl(206, 94%, 87%);
+}
+.container .paginate .paginate-button .paginate-button-text-group .paginate-button-details {
+  text-align: start;
+}
+.container .paginate .paginate-button .paginate-button-text-group .paginate-button-details .details-steps {
+  color: hsl(231, 11%, 63%);
+}
+.container .paginate .paginate-button .paginate-button-text-group .paginate-button-details .details-title {
+  color: hsl(0, 0%, 100%);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.form-button-group {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  padding: 1rem;
+  background-color: hsl(0, 0%, 100%);
+}
+.form-button-group .prev-button {
+  background-color: hsl(0, 0%, 100%);
+  border: none;
+  color: hsl(231, 11%, 63%);
+  font-weight: 500;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.form-button-group .next-button {
+  background-color: hsl(213, 96%, 18%);
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  color: hsl(0, 0%, 100%);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form-personal-info {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: hsl(0, 0%, 100%);
+  padding: 1rem;
+  height: 100%;
+}
+.form-personal-info .form-title {
+  margin-top: 1rem;
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
+}
+.form-personal-info .form-sub-title {
+  color: hsl(231, 11%, 63%);
+  font-weight: 400;
+}
+.form-personal-info .input-group {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+.form-personal-info .input-group .input-container {
+  display: flex;
+  flex-direction: column;
+}
+.form-personal-info .input-group .input-container label {
+  color: hsl(213, 96%, 18%);
+  font-weight: 400;
+}
+.form-personal-info .input-group .input-container input {
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-weight: 500;
+}
+.form-personal-info .input-group .input-container input::-moz-placeholder {
+  color: hsl(229, 24%, 87%);
+  font-weight: 500;
+}
+.form-personal-info .input-group .input-container input::placeholder {
+  color: hsl(229, 24%, 87%);
+  font-weight: 500;
+}
+.form-personal-info .button-next {
+  margin-top: auto;
+  align-self: flex-end;
+  background-color: hsl(213, 96%, 18%);
+  color: hsl(0, 0%, 100%);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.form-select-plan {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: hsl(0, 0%, 100%);
+  padding: 1rem;
+  height: 100%;
+}
+.form-select-plan .form-title {
+  margin-top: 1rem;
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
+}
+.form-select-plan .form-sub-title {
+  color: hsl(231, 11%, 63%);
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+.form-select-plan .form-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form-select-plan .form-control-group .form-control {
+  display: flex;
+  gap: 0.5rem;
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 5px;
+  background-color: hsl(0, 0%, 100%);
+  padding: 0.75rem;
+  cursor: pointer;
+  /* Add specific styles for checked items */
+}
+.form-select-plan .form-control-group .form-control input[type=radio] {
+  display: none;
+}
+.form-select-plan .form-control-group .form-control input[type=radio]:checked ~ .form-control {
+  border-color: hsl(243, 100%, 62%);
+}
+.form-select-plan .form-control-group .form-control:has(input[type=radio]:checked) {
+  border-color: hsl(243, 100%, 62%);
+  background-color: hsl(231, 100%, 99%);
+}
+.form-select-plan .form-control-group .form-control .form-control-text-container .form-control-title {
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
+}
+.form-select-plan .form-control-group .form-control .form-control-text-container .form-control-sub-title {
+  color: hsl(231, 11%, 63%);
+}
+.form-select-plan .form-switch {
+  border: none;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: hsl(217, 100%, 97%);
+  display: flex;
+  justify-content: center;
+}
+.form-select-plan .form-switch .form-switch-text {
+  color: hsl(231, 11%, 63%);
+  font-weight: 500;
+}
+.form-select-plan .form-switch .form-switch-text.active {
+  color: hsl(213, 96%, 18%);
+}
+.form-select-plan .form-switch .form-switch-button {
+  background-color: hsl(213, 96%, 18%);
+  border: none;
+  border-radius: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: start;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+.form-select-plan .form-switch .form-switch-button.active {
+  justify-content: end;
+}
+.form-select-plan .form-switch .form-switch-button .circle {
+  background-color: hsl(0, 0%, 100%);
+  padding: 0.5rem;
+  border: none;
+  border-radius: 50%;
+}
+.form-select-plan .input-container {
+  display: flex;
+  flex-direction: column;
+}
+.form-select-plan .form-switch {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.form-select-plan .form-select-plan-group-button {
+  margin-top: auto;
+  align-self: flex-end;
+}
+.form-select-plan .form-select-plan-group-button .form-button-prev {
+  background-color: hsl(0, 0%, 100%);
+  border: none;
+  color: hsl(231, 11%, 63%);
+  font-weight: 500;
+  cursor: pointer;
+}
+.form-select-plan .form-select-plan-group-button .form-button-next {
+  margin-top: auto;
+  align-self: flex-end;
+  background-color: hsl(213, 96%, 18%);
+  color: hsl(0, 0%, 100%);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.form-add-ons {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: hsl(0, 0%, 100%);
+  padding: 1rem;
+  height: 100%;
+}
+.form-add-ons .form-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.form-add-ons .form-control-group .form-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  border: 1px solid hsl(231, 11%, 63%);
+  border-radius: 5px;
+  background-color: hsl(0, 0%, 100%);
+  cursor: pointer;
+}
+.form-add-ons .form-control-group .form-control:hover {
+  border-color: hsl(243, 100%, 62%);
+}
+.form-add-ons .form-control-group .form-control input[type=checkbox] {
+  display: none;
+}
+.form-add-ons .form-control-group .form-control .checkmark {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid hsl(231, 11%, 63%);
+  border-radius: 4px;
+  background-color: transparent;
+}
+.form-add-ons .form-control-group .form-control .checkmark::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  background-color: hsl(243, 100%, 62%);
+  border-radius: 2px;
+  display: none;
+}
+.form-add-ons .form-control-group .form-control input[type=checkbox]:checked ~ .checkmark::after {
+  display: block;
+}
+.form-add-ons .form-control-group .form-control input[type=checkbox]:checked ~ .checkmark {
+  border-color: hsl(243, 100%, 62%);
+  background-color: hsl(231, 100%, 99%);
+}
+.form-add-ons .form-control-group .form-control .form-control-text-container {
+  margin-left: 3rem;
+}
+.form-add-ons .form-control-group .form-control .form-control-text-container .form-control-title {
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
+}
+.form-add-ons .form-control-group .form-control .form-control-text-container .form-control-sub-title {
+  font-size: 12px;
+  line-height: 1.2;
+  color: hsl(231, 11%, 63%);
+}
+.form-add-ons .form-control-group .form-control .form-control-price {
+  margin-left: auto;
+  color: hsl(243, 100%, 62%);
+}
+.form-add-ons .form-select-plan-group-button {
+  margin-top: auto;
+  align-self: flex-end;
+}
+.form-add-ons .form-select-plan-group-button .form-button-prev {
+  background-color: hsl(0, 0%, 100%);
+  border: none;
+  color: hsl(231, 11%, 63%);
+  font-weight: 500;
+  cursor: pointer;
+}
+.form-add-ons .form-select-plan-group-button .form-button-next {
+  margin-top: auto;
+  align-self: flex-end;
+  background-color: hsl(213, 96%, 18%);
+  color: hsl(0, 0%, 100%);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.form-summary {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: hsl(0, 0%, 100%);
+  padding: 1rem;
+  height: 100%;
+}
+.form-summary .form-title {
+  margin-top: 1rem;
+  color: hsl(213, 96%, 18%);
+}
+.form-summary .form-sub-title {
+  color: hsl(231, 11%, 63%);
+}
+.form-summary .form-summary-container {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: hsl(217, 100%, 97%);
+  width: 100%;
+}
+.form-summary .form-summary-container .summary-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-summary .form-summary-container .summary-container .summary-content .summary-title {
+  color: hsl(213, 96%, 18%);
+  font-weight: 500;
+}
+.form-summary .form-summary-container .summary-container .summary-content .summary-anchor {
+  color: hsl(231, 11%, 63%);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.form-summary .form-summary-container .summary-container .summary-price {
+  color: hsl(213, 96%, 18%);
+  font-weight: 500;
+}
+.form-summary .form-summary-container .summary-container .summary-title-other {
+  color: hsl(231, 11%, 63%);
+}
+.form-summary .form-summary-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-summary .form-summary-total .form-summary-total-title {
+  color: hsl(231, 11%, 63%);
+}
+.form-summary .form-summary-total .form-summary-total-price {
+  color: hsl(243, 100%, 62%);
+  font-weight: 700;
+}
+.form-summary .form-summary-button-group {
+  margin-top: auto;
+  align-self: flex-end;
+}
+.form-summary .form-summary-button-group .form-button-prev {
+  background-color: hsl(0, 0%, 100%);
+  border: none;
+  color: hsl(231, 11%, 63%);
+  font-weight: 500;
+  cursor: pointer;
+}
+.form-summary .form-summary-button-group .form-button-confirm {
+  margin-top: auto;
+  align-self: flex-end;
+  background-color: hsl(213, 96%, 18%);
+  color: hsl(0, 0%, 100%);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 650px) {
+  .app {
+    display: block;
+    min-height: auto;
+    padding: 0;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .container {
+    flex-direction: column;
+    gap: 0;
+    outline: none;
+  }
+  .container .paginate {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    border-radius: 0 0 10px 10px;
+    z-index: 1;
+  }
+  .container .form-container {
+    max-width: auto;
+    z-index: 99;
+  }
+  .container .form-container .form-content {
+    grid-template-columns: repeat(4, 100%);
+  }
+}
+@media only screen and (max-width: 650px) {
+  .form-personal-info {
+    height: auto;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .form-select-plan {
+    height: auto;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .form-add-ons {
+    height: auto;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .form-summary {
+    height: auto;
+  }
+}/*# sourceMappingURL=style.css.map */

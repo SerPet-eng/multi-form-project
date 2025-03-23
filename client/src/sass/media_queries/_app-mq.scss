@@ -1,0 +1,9 @@
+@use '../variables' as *;
+
+@media only screen and (max-width: 650px) {
+  .app {
+    display: block;
+    min-height: auto;
+    padding: 0;
+  }
+}
