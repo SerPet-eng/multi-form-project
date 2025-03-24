@@ -1,8 +1,9 @@
-import { useState } from 'react';
 import { useFormStore } from '../../store/formStore';
+import { useFormError } from '../../store/formError';
 
 export default function AddOns() {
   const { isMonthly, setSelectedAddOns } = useFormStore();
+  const { errorMessage } = useFormError();
 
   const addOns = [
     {
@@ -40,7 +41,12 @@ export default function AddOns() {
 
       <div className="form-control-group">
         {addOns.map((item, index) => (
-          <label key={index} className="form-control">
+          <label
+            key={index}
+            className={`form-control ${
+              errorMessage.error_addOns ? 'error-addOns' : ''
+            }`}
+          >
             <input
               type="checkbox"
               name="selectedAddOns"
@@ -56,6 +62,10 @@ export default function AddOns() {
             </p>
           </label>
         ))}
+
+        {errorMessage.error_addOns && (
+          <p className="error-message">{errorMessage.error_addOns}</p>
+        )}
       </div>
     </form>
   );

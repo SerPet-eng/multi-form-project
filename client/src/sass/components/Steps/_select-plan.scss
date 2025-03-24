@@ -38,6 +38,9 @@
       padding: 0.75rem;
       cursor: pointer; // Make the entire label clickable
 
+      &.error-plan {
+        border: 1px solid $clr-Primary-Red;
+      }
       input[type='radio'] {
         display: none; // Hides the native radio button
       }
@@ -62,6 +65,12 @@
           color: $clr-Neutral-900;
         }
       }
+    }
+
+    .error-message {
+      color: red;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
     }
   }
 

@@ -1,14 +1,17 @@
-import { useState } from 'react';
 import { useFormStore } from '../../store/formStore';
-import { useWindowSize } from '../../store/WindowContext';
+import { useFormError } from '../../store/formError';
 
 export default function PersonalForm() {
   const { formData, updateFormData } = useFormStore();
+  const { errorMessage } = useFormError();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     updateFormData(name, value);
   };
+
+  console.log(errorMessage);
 
   // const formatPhoneNumber = (value) => {
   //   // Remove all non-digit characters
@@ -41,44 +44,48 @@ export default function PersonalForm() {
         <div className="input-container">
           <label htmlFor="name">Name</label>
           <input
+            className={errorMessage.error_name ? 'error-name' : ''}
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
             placeholder="e.g. Stephen King"
           />
+          {errorMessage.error_name && (
+            <p className="error-message">{errorMessage.error_name}</p>
+          )}
         </div>
 
         <div className="input-container">
           <label htmlFor="email">Email Address</label>
           <input
+            className={errorMessage.error_email ? 'error-email' : ''}
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
             placeholder="e.g. stephenking@lorem.com"
           />
+          {errorMessage.error_email && (
+            <p className="error-message">{errorMessage.error_email}</p>
+          )}
         </div>
 
         <div className="input-container">
           <label htmlFor="phone">Phone Number</label>
           <input
+            className={errorMessage.error_phone ? 'error-phone' : ''}
             type="text"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
             placeholder="e.g. 1 234 567 890"
           />
+          {errorMessage.error_phone && (
+            <p className="error-message">{errorMessage.error_phone}</p>
+          )}
         </div>
       </div>
-
-      {/* {windowSizeChecker ? (
-        ''
-      ) : (
-        <button className="button-next" onClick={handleNext}>
-          Next Step
-        </button>
-      )} */}
     </form>
   );
 }

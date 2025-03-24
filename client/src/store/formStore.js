@@ -11,6 +11,7 @@ export const useFormStore = create((set) => ({
     selectedPlan: { title: '', price: 0, date: '' },
     selectedAddOns: [],
   },
+
   setSelectedPlan: (title, price, date) => {
     set((state) => ({
       formData: {
@@ -38,28 +39,17 @@ export const useFormStore = create((set) => ({
   },
   handleNext: () =>
     set((state) => ({
-      currentStep: (state.currentStep + 1) % pages.length, // Wrap around to the start
+      currentStep: (state.currentStep + 1) % pages.length,
     })),
   handlePrev: () =>
     set((state) => ({
-      currentStep: (state.currentStep - 1 + pages.length) % pages.length, // Handle negative indices
+      currentStep: (state.currentStep - 1 + pages.length) % pages.length,
     })),
-  updateFormData: (key, value) =>
+  updateFormData: (key, value) => {
     set((state) => ({
       formData: {
         ...state.formData,
         [key]: value,
-      },
-    })),
-  handleSubmit: (name, email, phone, plan, add_ons) => {
-    set((state) => ({
-      formData: {
-        ...state.formData,
-        name: name,
-        email: email,
-        phone: phone,
-        plan: plan,
-        add_ons: add_ons, // This should be an array of selected add-ons
       },
     }));
   },

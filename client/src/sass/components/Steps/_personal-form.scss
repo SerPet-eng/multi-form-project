@@ -48,6 +48,17 @@
           color: $clr-Neutral-800;
           font-weight: $fontWeight-500;
         }
+
+        &.error-name,
+        &.error-email,
+        &.error-phone {
+          border: 1px solid $clr-Primary-Red;
+        }
+      }
+      .error-message {
+        color: red;
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
       }
     }
   }

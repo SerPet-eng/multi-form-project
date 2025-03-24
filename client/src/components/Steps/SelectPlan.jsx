@@ -2,9 +2,11 @@ import ArcadeIcon from '../../../assets/images/icon-arcade.svg';
 import AdvancedIcon from '../../../assets/images/icon-advanced.svg';
 import ProIcon from '../../../assets/images/icon-pro.svg';
 import { useFormStore } from '../../store/formStore';
+import { useFormError } from '../../store/formError';
 
 export default function SelectPlan() {
   const { togglePlan, isMonthly, setSelectedPlan } = useFormStore();
+  const { errorMessage } = useFormError();
   const plans = [
     {
       img: ArcadeIcon,
@@ -35,7 +37,12 @@ export default function SelectPlan() {
 
       <div className="form-control-group">
         {plans.map((plan, index) => (
-          <label key={index} className="form-control active">
+          <label
+            key={index}
+            className={`form-control ${
+              errorMessage.error_plan ? 'error-plan' : ''
+            } `}
+          >
             <input
               type="radio"
               name="selectedPlan"
@@ -53,6 +60,10 @@ export default function SelectPlan() {
             </div>
           </label>
         ))}
+
+        {errorMessage.error_plan && (
+          <p className="error-message">{errorMessage.error_plan}</p>
+        )}
 
         <div className="form-switch">
           <p className={`form-switch-text ${isMonthly ? '' : 'active'}`}>

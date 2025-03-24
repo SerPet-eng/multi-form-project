@@ -215,6 +215,14 @@ h6 {
   color: hsl(229, 24%, 87%);
   font-weight: 500;
 }
+.form-personal-info .input-group .input-container input.error-name, .form-personal-info .input-group .input-container input.error-email, .form-personal-info .input-group .input-container input.error-phone {
+  border: 1px solid hsl(354, 84%, 57%);
+}
+.form-personal-info .input-group .input-container .error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
 .form-personal-info .button-next {
   margin-top: auto;
   align-self: flex-end;
@@ -259,6 +267,9 @@ h6 {
   cursor: pointer;
   /* Add specific styles for checked items */
 }
+.form-select-plan .form-control-group .form-control.error-plan {
+  border: 1px solid hsl(354, 84%, 57%);
+}
 .form-select-plan .form-control-group .form-control input[type=radio] {
   display: none;
 }
@@ -275,6 +286,11 @@ h6 {
 }
 .form-select-plan .form-control-group .form-control .form-control-text-container .form-control-sub-title {
   color: hsl(231, 11%, 63%);
+}
+.form-select-plan .form-control-group .error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
 }
 .form-select-plan .form-switch {
   border: none;
@@ -369,6 +385,9 @@ h6 {
 .form-add-ons .form-control-group .form-control:hover {
   border-color: hsl(243, 100%, 62%);
 }
+.form-add-ons .form-control-group .form-control.error-addOns {
+  border: 1px solid hsl(354, 84%, 57%);
+}
 .form-add-ons .form-control-group .form-control input[type=checkbox] {
   display: none;
 }
@@ -416,6 +435,11 @@ h6 {
 .form-add-ons .form-control-group .form-control .form-control-price {
   margin-left: auto;
   color: hsl(243, 100%, 62%);
+}
+.form-add-ons .form-control-group .error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
 }
 .form-add-ons .form-select-plan-group-button {
   margin-top: auto;

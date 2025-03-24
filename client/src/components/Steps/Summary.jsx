@@ -17,8 +17,6 @@ export default function Summary() {
     setTotalSum(pricePlan + priceAddOns);
   }, [pricePlan, addOns]);
 
-  console.log(formData);
-
   return (
     <div className="form-summary">
       <h2 className="form-title">Finish up</h2>

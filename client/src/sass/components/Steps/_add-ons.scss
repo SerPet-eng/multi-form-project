@@ -31,6 +31,10 @@
         border-color: $clr-Primary-800;
       }
 
+      &.error-addOns {
+        border: 1px solid $clr-Primary-Red;
+      }
+
       input[type='checkbox'] {
         display: none; // Hide the default checkbox
       }
@@ -86,6 +90,12 @@
         margin-left: auto;
         color: $clr-Primary-800;
       }
+    }
+
+    .error-message {
+      color: red;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
     }
   }
 
