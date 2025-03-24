@@ -1,55 +1,58 @@
 import ArcadeIcon from '../../../assets/images/icon-arcade.svg';
 import AdvancedIcon from '../../../assets/images/icon-advanced.svg';
 import ProIcon from '../../../assets/images/icon-pro.svg';
-import { useWindowSize } from '../../store/WindowContext';
 import { useFormStore } from '../../store/formStore';
 
 export default function SelectPlan() {
-  const { windowSizeChecker } = useWindowSize();
-  const { togglePlan, isMonthly, handleNext, handlePrev } = useFormStore();
-
-  const handleSumbit = (e) => {
-    e.preventDefault();
-  };
+  const { togglePlan, isMonthly, setSelectedPlan } = useFormStore();
+  const plans = [
+    {
+      img: ArcadeIcon,
+      title: 'Arcade',
+      price: !isMonthly ? 9 : 90,
+      date: !isMonthly ? 'mo' : 'yr',
+    },
+    {
+      img: AdvancedIcon,
+      title: 'Advanced',
+      price: !isMonthly ? 12 : 120,
+      date: !isMonthly ? 'mo' : 'yr',
+    },
+    {
+      img: ProIcon,
+      title: 'Pro',
+      price: !isMonthly ? 15 : 150,
+      date: !isMonthly ? 'mo' : 'yr',
+    },
+  ];
 
   return (
-    <form className="form-select-plan" onSubmit={handleSumbit}>
+    <div className="form-select-plan">
       <h2 className="form-title">Select your plan</h2>
       <p className="form-sub-title">
         You have the option of monthly or yearly billing.
       </p>
 
       <div className="form-control-group">
-        <label className="form-control active">
-          <input type="radio" name="radio" />
-          <span className="checkmark"></span>
-          <img src={ArcadeIcon} alt="Arcade Icon" />
-          <div className="form-control-text-container">
-            <p className="form-control-title">Arcade</p>
-            <p className="form-control-sub-title">PRICE / DATE</p>
-          </div>
-        </label>
-
-        <label className="form-control">
-          <input type="radio" name="radio" />
-          <span className="checkmark"></span>
-          <img src={AdvancedIcon} alt="Advanced Icon" />
-
-          <div className="form-control-text-container">
-            <p className="form-control-title">Advanced</p>
-            <p className="form-control-sub-title">PRICE / DATE</p>
-          </div>
-        </label>
-
-        <label className="form-control">
-          <input type="radio" name="radio" />
-          <span className="checkmark"></span>
-          <img src={ProIcon} alt="Pro Icon" />
-          <div className="form-control-text-container">
-            <p className="form-control-title">Pro</p>
-            <p className="form-control-sub-title">PRICE / DATE</p>
-          </div>
-        </label>
+        {plans.map((plan, index) => (
+          <label key={index} className="form-control active">
+            <input
+              type="radio"
+              name="selectedPlan"
+              onChange={() =>
+                setSelectedPlan(plan.title, plan.price, plan.date)
+              }
+            />
+            <span className="checkmark"></span>
+            <img src={plan.img} alt={`Image of ${plan.title}`} />
+            <div className="form-control-text-container">
+              <p className="form-control-title">{plan.title}</p>
+              <p className="form-control-sub-title">
+                ${plan.price}/{plan.date}
+              </p>
+            </div>
+          </label>
+        ))}
 
         <div className="form-switch">
           <p className={`form-switch-text ${isMonthly ? '' : 'active'}`}>
@@ -66,6 +69,6 @@ export default function SelectPlan() {
           </p>
         </div>
       </div>
-    </form>
+    </div>
   );
 }

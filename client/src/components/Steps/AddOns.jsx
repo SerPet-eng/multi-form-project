@@ -1,9 +1,35 @@
+import { useState } from 'react';
 import { useFormStore } from '../../store/formStore';
-import { useWindowSize } from '../../store/WindowContext';
 
 export default function AddOns() {
-  const { handlePrev, handleNext } = useFormStore();
-  const { windowSizeChecker } = useWindowSize();
+  const { isMonthly, setSelectedAddOns } = useFormStore();
+
+  const addOns = [
+    {
+      title: 'Online Service',
+      subTitle: 'Access to multiplayer',
+      price: !isMonthly ? 1 : 10,
+      date: !isMonthly ? 'mo' : 'yr',
+    },
+    {
+      title: 'Large Storage',
+      subTitle: 'Extra 1TB of cloud save',
+      price: !isMonthly ? 2 : 20,
+      date: !isMonthly ? 'mo' : 'yr',
+    },
+    {
+      title: 'Customizable Profile',
+      subTitle: 'Custom theme on your profile',
+      price: !isMonthly ? 2 : 20,
+      date: !isMonthly ? 'mo' : 'yr',
+    },
+  ];
+
+  const handleChange = (e, addOn) => {
+    const { checked } = e.target;
+
+    setSelectedAddOns(addOn, checked);
+  };
 
   return (
     <form className="form-add-ons">
@@ -13,37 +39,23 @@ export default function AddOns() {
       </p>
 
       <div className="form-control-group">
-        <label className="form-control">
-          <input type="checkbox" name="checkbox" />
-          <span className="checkmark"></span>
-          <div className="form-control-text-container">
-            <p className="form-control-title">Online Service</p>
-            <p className="form-control-sub-title">Access to multiplayer</p>
-          </div>
-          <p className="form-control-price">$1/mo</p>
-        </label>
-
-        <label className="form-control">
-          <input type="checkbox" name="checkbox" />
-          <span className="checkmark"></span>
-          <div className="form-control-text-container">
-            <p className="form-control-title">Large Storage</p>
-            <p className="form-control-sub-title">Extra 1TB of cloud save</p>
-          </div>
-          <p className="form-control-price">$2/mo</p>
-        </label>
-
-        <label className="form-control">
-          <input type="checkbox" name="checkbox" />
-          <span className="checkmark"></span>
-          <div className="form-control-text-container">
-            <p className="form-control-title">Customizable Profile</p>
-            <p className="form-control-sub-title">
-              Custom theme on your profile
+        {addOns.map((item, index) => (
+          <label key={index} className="form-control">
+            <input
+              type="checkbox"
+              name="selectedAddOns"
+              onChange={(e) => handleChange(e, item)}
+            />
+            <span className="checkmark"></span>
+            <div className="form-control-text-container">
+              <p className="form-control-title">{item.title}</p>
+              <p className="form-control-sub-title">{item.subTitle}</p>
+            </div>
+            <p className="form-control-price">
+              +${item.price}/{item.date}
             </p>
-          </div>
-          <p className="form-control-price">$2/mo</p>
-        </label>
+          </label>
+        ))}
       </div>
     </form>
   );

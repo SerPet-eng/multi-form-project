@@ -1,9 +1,14 @@
+import { useState } from 'react';
 import { useFormStore } from '../../store/formStore';
 import { useWindowSize } from '../../store/WindowContext';
 
 export default function PersonalForm() {
-  const { handleNext } = useFormStore();
-  const { windowSizeChecker } = useWindowSize();
+  const { formData, updateFormData } = useFormStore();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    updateFormData(name, value);
+  };
 
   // const formatPhoneNumber = (value) => {
   //   // Remove all non-digit characters
@@ -35,7 +40,13 @@ export default function PersonalForm() {
       <div className="input-group">
         <div className="input-container">
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" placeholder="e.g. Stephen King" />
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="e.g. Stephen King"
+          />
         </div>
 
         <div className="input-container">
@@ -43,13 +54,21 @@ export default function PersonalForm() {
           <input
             type="email"
             name="email"
+            value={formData.email}
+            onChange={handleChange}
             placeholder="e.g. stephenking@lorem.com"
           />
         </div>
 
         <div className="input-container">
           <label htmlFor="phone">Phone Number</label>
-          <input type="text" name="phone" placeholder="e.g. 1 234 567 890" />
+          <input
+            type="text"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="e.g. 1 234 567 890"
+          />
         </div>
       </div>
 
