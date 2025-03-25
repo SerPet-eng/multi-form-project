@@ -21,8 +21,10 @@ export default function Buttons() {
   } = useFormError();
 
   const handleNextInput = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isNameEmpty = formData?.name.trim() === '';
     const isEmailEmpty = formData?.email.trim() === '';
+    const isEmailValid = emailRegex.test(formData?.email.trim());
     const isPhoneEmpty = formData?.phone.trim() === '';
     const isSelectedPlanEmpty = !formData?.selectedPlan.title;
     const isSelectedAddOnsEmpty = formData?.selectedAddOns.length === 0;
@@ -32,8 +34,13 @@ export default function Buttons() {
         if (isNameEmpty) setErrorName('Name is required');
         else setErrorName(null);
 
-        if (isEmailEmpty) setErrorEmail('Email is required');
-        else setErrorEmail(null);
+        if (isEmailEmpty) {
+          setErrorEmail('Email is required');
+        } else if (!isEmailValid) {
+          setErrorEmail('Email is invalid');
+        } else {
+          setErrorEmail(null);
+        }
 
         if (isPhoneEmpty) setErrorPhone('Phone is required');
         else setErrorPhone(null);
