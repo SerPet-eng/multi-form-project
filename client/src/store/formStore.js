@@ -4,6 +4,7 @@ import { pages } from '../content/Content';
 export const useFormStore = create((set) => ({
   currentStep: 0,
   isMonthly: false,
+  isSuccess: false,
   formData: {
     name: '',
     email: '',
@@ -35,6 +36,11 @@ export const useFormStore = create((set) => ({
   togglePlan: () => {
     set((state) => ({
       isMonthly: !state.isMonthly,
+    }));
+  },
+  toggleSuccess: () => {
+    set((state) => ({
+      isSuccess: !state.isSuccess,
     }));
   },
   handleNext: () =>

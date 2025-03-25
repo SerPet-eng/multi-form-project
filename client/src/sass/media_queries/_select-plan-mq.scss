@@ -1,5 +1,18 @@
 @media only screen and (max-width: 650px) {
   .form-select-plan {
     height: auto;
+
+    .form-control-group {
+      grid-template-columns: repeat(1, 1fr);
+
+      .form-control {
+        align-items: center;
+        flex-direction: row;
+
+        .form-icon {
+          margin-bottom: auto;
+        }
+      }
+    }
   }
 }

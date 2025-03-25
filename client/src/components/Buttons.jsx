@@ -3,7 +3,14 @@ import { useFormStore } from '../store/formStore';
 import { useFormError } from '../store/formError';
 
 export default function Buttons() {
-  const { handlePrev, handleNext, currentStep, formData } = useFormStore();
+  const {
+    handlePrev,
+    handleNext,
+    currentStep,
+    formData,
+    toggleSuccess,
+    isSuccess,
+  } = useFormStore();
   const {
     setErrorName,
     setErrorEmail,
@@ -73,7 +80,10 @@ export default function Buttons() {
   };
 
   return (
-    <div className="form-button-group">
+    <div
+      className="form-button-group"
+      style={isSuccess ? { display: 'none' } : { display: 'flex' }}
+    >
       <div>
         {currentStep === 0 ? null : (
           <button className="prev-button" onClick={handlePrev}>
@@ -82,7 +92,7 @@ export default function Buttons() {
         )}
 
         {currentStep === pages?.length - 1 ? (
-          <button className="next-button" type="submit">
+          <button className="next-button" type="submit" onClick={toggleSuccess}>
             Confirm
           </button>
         ) : (

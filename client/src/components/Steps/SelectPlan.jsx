@@ -51,11 +51,21 @@ export default function SelectPlan() {
               }
             />
             <span className="checkmark"></span>
-            <img src={plan.img} alt={`Image of ${plan.title}`} />
+            <img
+              className="form-icon"
+              src={plan.img}
+              alt={`Image of ${plan.title}`}
+            />
             <div className="form-control-text-container">
               <p className="form-control-title">{plan.title}</p>
               <p className="form-control-sub-title">
                 ${plan.price}/{plan.date}
+              </p>
+              <p
+                className="form-yearly-plan"
+                style={isMonthly ? { display: 'flex' } : { display: 'none' }}
+              >
+                2 months free
               </p>
             </div>
           </label>
@@ -64,21 +74,21 @@ export default function SelectPlan() {
         {errorMessage.error_plan && (
           <p className="error-message">{errorMessage.error_plan}</p>
         )}
+      </div>
 
-        <div className="form-switch">
-          <p className={`form-switch-text ${isMonthly ? '' : 'active'}`}>
-            Monthly
-          </p>
-          <button
-            className={`form-switch-button ${isMonthly ? 'active' : ''}`}
-            onClick={togglePlan}
-          >
-            <div className="circle"></div>
-          </button>
-          <p className={`form-switch-text ${isMonthly ? 'active' : ''}`}>
-            Yearly
-          </p>
-        </div>
+      <div className="form-switch">
+        <p className={`form-switch-text ${isMonthly ? '' : 'active'}`}>
+          Monthly
+        </p>
+        <button
+          className={`form-switch-button ${isMonthly ? 'active' : ''}`}
+          onClick={togglePlan}
+        >
+          <div className="circle"></div>
+        </button>
+        <p className={`form-switch-text ${isMonthly ? 'active' : ''}`}>
+          Yearly
+        </p>
       </div>
     </div>
   );

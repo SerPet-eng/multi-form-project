@@ -198,6 +198,10 @@ h6 {
   flex-direction: column;
 }
 .form-personal-info .input-group .input-container label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   color: hsl(213, 96%, 18%);
   font-weight: 400;
 }
@@ -237,6 +241,7 @@ h6 {
 .form-select-plan {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   border-radius: 10px;
   background-color: hsl(0, 0%, 100%);
   padding: 1rem;
@@ -253,12 +258,13 @@ h6 {
   margin-bottom: 0.5rem;
 }
 .form-select-plan .form-control-group {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 .form-select-plan .form-control-group .form-control {
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
   border: 1px solid hsl(229, 24%, 87%);
   border-radius: 5px;
@@ -269,6 +275,11 @@ h6 {
 }
 .form-select-plan .form-control-group .form-control.error-plan {
   border: 1px solid hsl(354, 84%, 57%);
+}
+.form-select-plan .form-control-group .form-control .form-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5rem;
 }
 .form-select-plan .form-control-group .form-control input[type=radio] {
   display: none;
@@ -286,6 +297,9 @@ h6 {
 }
 .form-select-plan .form-control-group .form-control .form-control-text-container .form-control-sub-title {
   color: hsl(231, 11%, 63%);
+}
+.form-select-plan .form-control-group .form-control .form-control-text-container .form-yearly-plan {
+  color: hsl(213, 96%, 18%);
 }
 .form-select-plan .form-control-group .error-message {
   color: red;
@@ -582,6 +596,16 @@ h6 {
   .form-select-plan {
     height: auto;
   }
+  .form-select-plan .form-control-group {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .form-select-plan .form-control-group .form-control {
+    align-items: center;
+    flex-direction: row;
+  }
+  .form-select-plan .form-control-group .form-control .form-icon {
+    margin-bottom: auto;
+  }
 }
 @media only screen and (max-width: 650px) {
   .form-add-ons {
@@ -592,4 +616,26 @@ h6 {
   .form-summary {
     height: auto;
   }
+}
+.form-success {
+  background-color: hsl(0, 0%, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  height: 500px;
+  padding: 1rem;
+}
+.form-success .icon {
+  width: 100px;
+  height: 100px;
+}
+.form-success .form-success-title {
+  color: hsl(213, 96%, 18%);
+}
+.form-success .form-success-text {
+  color: hsl(231, 11%, 63%);
+  max-width: 80%;
 }/*# sourceMappingURL=style.css.map */
